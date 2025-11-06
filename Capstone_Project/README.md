@@ -26,7 +26,7 @@ This study empirically compares both setups to quantify their real-world perform
 
 ---
 
-## ⚙️ Experimental Setup  
+##  Experimental Setup  
 
 - **Platform:** AWS Free Tier (t3.micro EC2 instance, S3 storage)  
 - **Languages & Tools:** Python 3.9+, pandas, numpy, scikit-learn, boto3  
