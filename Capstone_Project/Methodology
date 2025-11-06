@@ -1,0 +1,24 @@
+This study aimed to compare the performance of cloud-only and hybrid edge–cloud architectures for real-time IoT data analytics using two datasets — Human Activity Recognition (HAR) and Smart Mobility Traffic. The overall goal was to evaluate differences in accuracy, latency, and cost between the two approaches.
+
+1. Experimental Setup
+The experiments were conducted using the AWS Free Tier platform. Each participant created an EC2 instance (t3.micro) and an S3 bucket to store datasets, models, and result files. Python (version 3.9+) was used for data processing and model training, along with libraries such as pandas, numpy, scikit-learn, and boto3 for AWS integration.
+Two architectures were implemented for each dataset:
+• Cloud-Only – where the full dataset was uploaded to the cloud, and all processing, model training, and prediction were done entirely on the EC2 instance.
+• Hybrid Edge–Cloud – where part of the processing was done locally (edge side) to reduce data size, and only the filtered data was uploaded to S3 for model training and prediction in the cloud.
+
+2. Dataset Description
+Two open datasets were used. The UCI Human Activity Recognition (HAR) dataset contains sensor readings from smartphones labelled with physical activities such as walking, sitting, or standing. The Smart Mobility Traffic dataset includes time-series data on vehicle count, speed, occupancy, weather, and congestion level for different city zones.
+Both datasets represent real-world IoT scenarios that require fast processing and decision-making.
+
+3. Data Preprocessing
+For both datasets, initial data cleaning was done by removing null values and unnecessary textual columns. The target variable — Activity for HAR and Traffic Condition for Traffic — was converted into numerical form using LabelEncoder. All numerical features were standardized using StandardScaler to maintain uniform data ranges.
+In the hybrid approach, a simplified form of feature selection was applied at the edge to reduce the dataset size before upload. Columns with redundant or low variation (e.g., location coordinates) were removed, and categorical features such as Weather Condition and Traffic Light State were converted into binary (one-hot encoded) form. This process significantly reduced file size and upload time while retaining key features for model learning.
+The local preprocessing time and upload duration were measured to understand the overhead introduced at the edge.
+
+4. Cloud Processing and Model Training
+After preprocessing, the filtered dataset was uploaded to the S3 bucket, and model training was performed on the EC2 instance. Both architectures used the Random Forest Classifier as the common baseline model due to its robustness and interpretability. The dataset was split into 70% training and 30% testing subsets.
+Training time and prediction latency were measured to compare efficiency. For the hybrid setup, only the reduced dataset was trained in the cloud, while for the cloud-only setup, the full dataset was trained end-to-end.
+
+5. Performance Evaluation
+Each run generated a results.csv file that recorded accuracy, latency (training + prediction time), preprocessing time, upload time, cloud hours used, and estimated AWS cost. These files were merged for analysis and visualization.
+The evaluation focused on understanding the trade-offs — whether reduced upload and processing times in the hybrid setup compensated for the possible drop in accuracy compared to the cloud-only model.
