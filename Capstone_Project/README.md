@@ -5,8 +5,8 @@
 |---------|----------|---------------|--------|----------------|----------------|-------------------|-------------|----------------|--------------|-----------|
 | Esha | Smart Mobility Traffic | Hybrid Edge–Cloud | Random Forest | 100.00 | 0.16 | 15 | 6 | t3.micro | 0.5 | 8.3 |
 | Ash | Smart Mobility Traffic | Cloud-only | Random Forest | 99.90 | 0.60 | 12 | 8 | t3.micro | 0.5 | 8.3 |
-| Lipika | Human Activity Recognition | Hybrid Edge–Cloud | Random Forest | 92.60 | 16.33 | 0 | 6 | t3.micro | 0.5 | 8.3 |
-| Shouvik | Human Activity Recognition | Cloud-only | Random Forest | 92.60 | 17.04 | 0.93 | 0 | t3.micro | 0.5 | 8.3 |
+| Lipika | Human Activity Recognition | Hybrid Edge–Cloud | Random Forest | 92.60 | 16.33 | 16 | 6 | t3.micro | 0.5 | 8.3 |
+| Shouvik | Human Activity Recognition | Cloud-only | Random Forest | 92.60 | 17.04 | 0.93 | 8 | t3.micro | 0.5 | 8.3 |
 
 ---
 
