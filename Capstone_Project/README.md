@@ -6,7 +6,7 @@ The objective was to evaluate trade-offs in **accuracy**, **latency**, and **cos
 
 ---
 
-## 📘 Overview  
+##  Overview  
 
 Cloud computing provides scalability and flexibility for large-scale analytics,  
 but often suffers from latency and bandwidth limitations in time-sensitive IoT applications.  
@@ -17,7 +17,7 @@ This study empirically compares both setups to quantify their real-world perform
 
 ---
 
-## 🧠 Architecture Summary  
+##  Architecture Summary  
 
 | Architecture | Description |
 |---------------|-------------|
@@ -38,18 +38,18 @@ This study empirically compares both setups to quantify their real-world perform
 
 ---
 
-## 📊 Results Summary  
+##  Results Summary  
 
 | Member | Dataset | Architecture | Accuracy (%) | Latency (sec) | Preprocessing (s) | Upload (s) | Cloud Instance | Cost (₹) | Notes |
 |:--------|:----------|:--------------|:--------------|:----------------|:-------------------|:--------------|:----------------|:-----------|:--------|
-| **Lipika** | HAR | Hybrid Edge–Cloud | 92.6 | 16.33 | ~10 | 6 | t3.micro | 8.3 | Mean/std feature selection |
+| **Lipika** | HAR | Hybrid Edge–Cloud | 92.6 | 16.33 | 16 | 6 | t3.micro | 8.3 | Mean/std feature selection |
 | **Shouvik** | HAR | Cloud-Only | 92.6 | 6.00 | 0.9 | 6 | t3.micro | 8.3 | Cloud-only full training |
 | **Esha** | Smart Mobility | Hybrid Edge–Cloud | 100.0 | 0.16 | 15 | 6 | t3.micro | 8.3 | Reduced data from edge |
 | **Ash** | Smart Mobility | Cloud-Only | 99.86 | 0.60 | 12 | 8 | t3.micro | 8.3 | Full dataset on cloud |
 
 ---
 
-## 🔍 Key Observations  
+##  Key Observations  
 
 - Cloud-only setups achieved slightly higher consistency in accuracy.  
 - Hybrid setups demonstrated significantly lower latency and upload size,  
@@ -61,14 +61,14 @@ This study empirically compares both setups to quantify their real-world perform
 
 ---
 
-## 🧾 Methodology  
+##  Methodology  
 
 A detailed explanation of the experimental setup, preprocessing pipeline, and model training process is provided in  
 **[Methodology.docx](./Methodology.docx)** — outlining each phase from data collection to evaluation.
 
 ---
 
-## 🏁 Conclusion  
+##  Conclusion  
 
 The hybrid edge–cloud approach, while slightly less accurate, achieved faster inference with reduced bandwidth and computation costs.  
 This trade-off demonstrates that hybrid designs are well-suited for **real-time IoT analytics** such as smart city and mobility systems,  
@@ -76,16 +76,16 @@ where rapid response is more critical than marginal accuracy gains.
 
 ---
 
-## 👩‍💻 Contributors  
+##  Contributors  
 
 - **Esha Maria Joseph** — Smart Mobility (Hybrid)  
-- **Ash** — Smart Mobility (Cloud-Only)  
-- **Lipika** — HAR (Hybrid)  
-- **Shouvik** — HAR (Cloud-Only)
+- **Aswathy M** — Smart Mobility (Cloud-Only)  
+- **Lipika Kaushal** — HAR (Hybrid)  
+- **Shouvik Bhowmick** — HAR (Cloud-Only)
 
 ---
 
-## 🧱 Repository Information  
+##  Repository Information  
 
 This repository contains the complete codebase, experimental results, and documentation  
 for the Capstone Project *“Empirical Comparison of Cloud-Only and Hybrid Edge–Cloud Architectures for Real-Time IoT Analytics”*  
