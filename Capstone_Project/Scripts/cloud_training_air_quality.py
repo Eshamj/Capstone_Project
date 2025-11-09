@@ -26,7 +26,7 @@ print("📥 Downloading preprocessed data from S3...")
 obj = s3.get_object(Bucket=BUCKET, Key=KEY)
 df = pd.read_csv(io.BytesIO(obj["Body"].read()))
 
-print("✅ Data downloaded successfully!")
+print(" Data downloaded successfully!")
 print("Shape:", df.shape)
 print("Columns:", list(df.columns))
 
@@ -67,7 +67,7 @@ r2 = r2_score(y_test, preds)
 mae = mean_absolute_error(y_test, preds)
 rmse = np.sqrt(mean_squared_error(y_test, preds))
 
-print(f"✅ Training complete!")
+print(f" Training complete!")
 print(f"R² Score: {r2:.4f}")
 print(f"MAE: {mae:.4f}")
 print(f"RMSE: {rmse:.4f}")
@@ -88,14 +88,15 @@ results_df = pd.DataFrame([{
 }])
 
 results_df.to_csv(RESULTS_FILE, index=False)
-print(f"📄 Results saved locally as {RESULTS_FILE}")
+print(f"Results saved locally as {RESULTS_FILE}")
 
 # ----------------------------------------------------
 # STEP 7 — Upload results CSV to S3
 # ----------------------------------------------------
-print("☁ Uploading results CSV to S3...")
+print(" Uploading results CSV to S3...")
 
 s3.upload_file(RESULTS_FILE, BUCKET, RESULTS_FILE)
 
-print(f"✅ Results uploaded successfully to s3://{BUCKET}/{RESULTS_FILE}")
-print("🏁 Hybrid training phase completed successfully!")
+print(f" Results uploaded successfully to s3://{BUCKET}/{RESULTS_FILE}")
+print("Hybrid training phase completed successfully!")
+
