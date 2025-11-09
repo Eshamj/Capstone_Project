@@ -47,7 +47,7 @@ filtered_df.to_csv("filtered_air_quality.csv", index=False)
 
 t1 = time.time()
 preprocessing_time = t1 - t0
-print(f"✅ Preprocessing completed in {preprocessing_time:.2f} seconds")
+print(f"Preprocessing completed in {preprocessing_time:.2f} seconds")
 
 # Step 8: Upload to AWS S3
 s3 = boto3.client('s3')
@@ -59,5 +59,6 @@ s3.upload_file("filtered_air_quality.csv", bucket, key)
 t_upload_end = time.time()
 upload_time = t_upload_end - t_upload_start
 
-print(f"✅ Uploaded to S3 ({bucket}/{key}) successfully!")
+print(f"Uploaded to S3 ({bucket}/{key}) successfully!")
 print(f"Upload Time: {upload_time:.2f} sec, File Size: {os.path.getsize('filtered_air_quality.csv')} bytes")
+
