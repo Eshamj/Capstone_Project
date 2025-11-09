@@ -21,11 +21,11 @@ MODEL_NAME = "XGBoostRegressor"
 # STEP 1 — Download data from S3
 # ----------------------------------------------------
 s3 = boto3.client("s3")
-print("📥 Downloading preprocessed data from S3...")
+print(" Downloading preprocessed data from S3...")
 
 obj = s3.get_object(Bucket=BUCKET, Key=KEY)
 df = pd.read_csv(io.BytesIO(obj["Body"].read()))
-print("✅ Data downloaded successfully!")
+print(" Data downloaded successfully!")
 print("Initial shape:", df.shape)
 
 # ----------------------------------------------------
@@ -38,7 +38,7 @@ if target_col not in df.columns:
 # Remove invalid or missing CO values (usually -200)
 invalid_count = (df[target_col] <= 0).sum()
 df = df[df[target_col] > 0]
-print(f"🧹 Removed {invalid_count} invalid CO(GT) readings. New shape: {df.shape}")
+print(f" Removed {invalid_count} invalid CO(GT) readings. New shape: {df.shape}")
 
 # ----------------------------------------------------
 # STEP 3 — Prepare features and target
@@ -56,7 +56,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 # ----------------------------------------------------
 # STEP 5 — Train fine-tuned XGBoost model
 # ----------------------------------------------------
-print("☁ Training optimized XGBoost model (cloud simulation)...")
+print(" Training optimized XGBoost model (cloud simulation)...")
 
 t0 = time.time()
 model = XGBRegressor(
@@ -85,7 +85,7 @@ r2 = r2_score(y_test, preds)
 mae = mean_absolute_error(y_test, preds)
 rmse = np.sqrt(mean_squared_error(y_test, preds))
 
-print("\n✅ Training complete!")
+print("\n Training complete!")
 print(f"R² Score: {r2:.4f}")
 print(f"MAE: {mae:.4f}")
 print(f"RMSE: {rmse:.4f}")
@@ -106,12 +106,13 @@ results_df = pd.DataFrame([{
 }])
 
 results_df.to_csv(RESULTS_FILE, index=False)
-print(f"📄 Results saved locally as {RESULTS_FILE}")
+print(f" Results saved locally as {RESULTS_FILE}")
 
 # ----------------------------------------------------
 # STEP 8 — Upload results to S3
 # ----------------------------------------------------
 print("☁ Uploading results CSV to S3...")
 s3.upload_file(RESULTS_FILE, BUCKET, RESULTS_FILE)
-print(f"✅ Uploaded results successfully to s3://{BUCKET}/{RESULTS_FILE}")
-print("🏁 XGBoost hybrid training phase completed successfully!")
+print(f" Uploaded results successfully to s3://{BUCKET}/{RESULTS_FILE}")
+print(" XGBoost hybrid training phase completed successfully!")
+
