@@ -36,7 +36,7 @@ X = pd.DataFrame(X_scaled, columns=X.columns)
 # Step 6: Feature reduction (simulate edge filtering)
 sel = VarianceThreshold(threshold=0.1)
 X_reduced = sel.fit_transform(X)
-selected_features = X.columns[sel.get_support()]  # ✅ keep feature names
+selected_features = X.columns[sel.get_support()]  #  keep feature names
 print("Reduced feature count:", X_reduced.shape[1])
 print("Selected features:", list(selected_features))
 
@@ -61,4 +61,5 @@ upload_time = t_upload_end - t_upload_start
 
 print(f"Uploaded to S3 ({bucket}/{key}) successfully!")
 print(f"Upload Time: {upload_time:.2f} sec, File Size: {os.path.getsize('filtered_air_quality.csv')} bytes")
+
 
